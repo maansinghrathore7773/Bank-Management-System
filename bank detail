@@ -1,0 +1,40 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+struct Account {
+    int id; char name[30]; double bal;
+    void show() { cout << "\nAcc: " << id << " | Name: " << name << " | Balance: $" << bal << "\n"; }
+};
+
+void process(int id, int opt) {
+    Account a;
+    fstream f("bank.dat", ios::binary | ios::in | ios::out);
+    while (f.read((char*)&a, sizeof(a))) {
+        if (a.id == id) {
+            if (opt == 2) a.show();
+            else {
+                double amt; cout << "Amount: $"; cin >> amt;
+                if (opt == 3) a.bal += amt;
+                if (opt == 4 && amt <= a.bal) a.bal -= amt;
+                f.seekp(-(int)sizeof(a), ios::cur);
+                f.write((char*)&a, sizeof(a));
+                cout << "Done!\n";
+            }
+            f.close(); return;
+        }
+    }
+    cout << "Not Found!\n"; f.close();
+}
+
+int main() {
+    int opt, id; Account a;
+    while (cout << "\n1.New 2.Bal 3.Dep 4.With 5.Exit: " << (cin >> opt, opt) && opt != 5) {
+        if (opt == 1) {
+            cout << "Enter ID, Name, Balance: "; cin >> a.id >> a.name >> a.bal;
+            ofstream("bank.dat", ios::binary | ios::app).write((char*)&a, sizeof(a));
+        } else {
+            cout << "Enter ID: "; cin >> id; process(id, opt);
+        }
+    }
+}

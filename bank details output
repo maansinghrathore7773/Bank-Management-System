@@ -1,0 +1,27 @@
+1.New 2.Bal 3.Dep 4.With 5.Exit: 1
+Enter ID, Name, Balance: 101 John 50000
+
+1.New 2.Bal 3.Dep 4.With 5.Exit: 2
+Enter ID: 101
+
+Acc: 101 | Name: John | Balance: ₹50000
+
+1.New 2.Bal 3.Dep 4.With 5.Exit: 3
+Enter ID: 101
+Amount: ₹10000
+Done!
+
+1.New 2.Bal 3.Dep 4.With 5.Exit: 2
+Enter ID: 101
+
+Acc: 101 | Name: John | Balance: ₹60000
+
+1.New 2.Bal 3.Dep 4.With 5.Exit: 4
+Enter ID: 101
+Amount: ₹15000
+Done!
+
+1.New 2.Bal 3.Dep 4.With 5.Exit: 2
+Enter ID: 101
+
+Acc: 101 | Name: John | Balance: ₹45000
